@@ -11,12 +11,13 @@ This script pings a device on your network and reports whether it is online or n
 
 - You might also need to install [`configparser`](https://docs.python.org/3/library/configparser.html): `pip install configparser`
 
-- Copy or rename `config.template.ini` to `config.ini` and edit the file so that it contains your Domoticz and device details.
+- Copy `config.template.ini` to `config.ini` and edit the file so that it contains your Domoticz details.
+
+- Copy `devices/example.ini` for every device, like your TV; `devices/tv.ini` and edit the file so that it contains your Device details.
 
 You can now run the script!
 
-If you want to have multiple config files, you can specify which one to load by giving its filename as an argument in the command-line: `python online_checker.py config2.ini`
-
+If you want to have multiple devices, you can specify which one to check by giving its device-name as an argument in the command-line: `python online_checker.py tv`
 
 
 ## Run as a systemd service
