@@ -8,14 +8,23 @@ from configparser import ConfigParser
 
 import requests
 
-FILENAME = sys.argv[1] if len(sys.argv) > 1 else 'config.ini'
 CONFIG = ConfigParser()
-CONFIG.read(FILENAME)
+CONFIG.read('config.ini')
+
 try:
     DOMO = CONFIG['DOMOTICZ']
-    DEVICE = CONFIG['DEVICE']
 except (KeyError, TypeError):
     raise Exception('Config file is unreadable or incomplete.')
+
+DEVICE_NAME = sys.argv[1] if len(sys.argv) > 1 else 'example'
+CONFIG = ConfigParser();
+CONFIG.read('devices/' + DEVICE_NAME + '.ini')
+
+try:
+    DEVICE = CONFIG['DEVICE']
+except (KeyError, TypeError):
+    raise Exception('Device file is unreadable or incomplete.')
+
 DOMO['URL'] = 'http://'+DOMO['SERVER']+'/json.htm?'
 
 def domo_request(req):
