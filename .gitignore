@@ -1,5 +1,8 @@
 config.ini
 
+devices/*.ini
+!devices/example.ini
+
 # python junk files
 __pycache__
 *.pyc
